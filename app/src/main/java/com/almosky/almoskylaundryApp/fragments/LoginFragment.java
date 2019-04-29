@@ -3,6 +3,7 @@ package com.almosky.almoskylaundryApp.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,11 +91,13 @@ public class LoginFragment extends Fragment implements SignupOrLoginActivity.Fra
 
 
         String url = ApiConstants.loginUrl;
+        Log.d("Success-", "JSON:" + "Inside Login params"+params);
         apiCalls.callApiPost(SignUpActivity, params, SignUpActivity.mDialog, url, 2);
     }
 
     @Override
     public void fragResultInterface(String response, int requestId) {
+        Log.d("Success-", "JSON:" + "Inside Login response"+response);
         try {
             final Logindto userData;
             Gson gson = new Gson();

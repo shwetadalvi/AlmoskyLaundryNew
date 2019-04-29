@@ -27,32 +27,18 @@ public class Almosky {
     public ArrayList<categoryPriceList> washironpriceList;
     public ArrayList<categoryPriceList> ironingpriceList;
     public ArrayList<priceListdto.Detail> itempriceList;
-
-
-
     public RequestParams mRequestParams;
-
-
     ArrayList<priceListdto.Detail> priceDetails;
-
     public boolean updatePriceList;
-
-
     public ArrayList<String> pickdaysname;
     public ArrayList<String> deliverydaysname;
-
-
     public ArrayList<categorydto.Detail> categoryList;
     public OrderListdto.Result selectedOrder;
-
     public Addressdto.Result selectedAddress;
-
-
     public String orderType;
     public String address;
     public String deliveryType;
     public String priceList;
-
     public String pickuptime;
     public String deliverytime;
     public String deliverydate;

@@ -7,7 +7,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
-
+import com.almosky.almoskylaundryApp.activity.DeliveryActivity;
+import com.almosky.almoskylaundryApp.utils.AppPrefes;
+import com.almosky.almoskylaundryApp.utils.constants.ApiConstants;
+import com.almosky.almoskylaundryApp.utils.constants.Constants;
+import com.almosky.almoskylaundryApp.utils.constants.PrefConstants;
+import com.loopj.android.http.RequestParams;
 
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -29,6 +34,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 finish();
             }
         }, 3000);
+
 
     }
 }
