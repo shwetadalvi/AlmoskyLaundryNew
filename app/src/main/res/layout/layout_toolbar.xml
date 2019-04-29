@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/appBar"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/AppTheme.AppBarOverlay">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/ic_gradient_background"
+        app:contentInsetStartWithNavigation="0.0dp"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        <TextView
+            android:id="@+id/tb_titleTextView"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:gravity="center_vertical"
+            android:text="@string/app_name"
+            android:textColor="@android:color/white"
+            />
+
+        <ImageView
+            android:id="@+id/backArrow"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:src="@mipmap/back_arrow"
+            android:tint="@color/white"
+            android:visibility="gone" />
+    </androidx.appcompat.widget.Toolbar>
+</com.google.android.material.appbar.AppBarLayout>

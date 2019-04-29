@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    android:scrollbarSize="1dp"
+    android:scrollbarStyle="outsideInset"
+    android:scrollbarThumbVertical="@color/colorDivider">
+
+    <LinearLayout
+        android:id="@+id/progress_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:errorTextAppearance="@style/TextLabel.Primary.Error"
+            app:hintTextAppearance="@style/TextLabel.Primary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_first_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/edt_hint_first_name"
+                android:inputType="textPersonName"
+                android:theme="@style/TextLabel.Primary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:errorTextAppearance="@style/TextLabel.Primary.Error"
+            app:hintTextAppearance="@style/TextLabel.Primary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_last_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/edt_hint_last_name"
+                android:inputType="textPersonName"
+                android:theme="@style/TextLabel.Primary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:errorTextAppearance="@style/TextLabel.Primary.Error"
+            app:hintTextAppearance="@style/TextLabel.Primary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_email"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/edt_email"
+                android:inputType="textEmailAddress"
+                android:theme="@style/TextLabel.Primary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputPhoneExt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                app:errorTextAppearance="@style/TextLabel.Primary.Error"
+                app:hintTextAppearance="@style/TextLabel.Primary"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorTextSecondary">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPhoneExt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:hint="@string/edt_hint_code"
+                    android:inputType="textPhonetic"
+                    android:theme="@style/TextLabel.Primary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                app:errorTextAppearance="@style/TextLabel.Primary.Error"
+                app:hintTextAppearance="@style/TextLabel.Primary"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorTextSecondary">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_phone"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/edt_hint_mobile"
+                    android:inputType="phone"
+                    android:theme="@style/TextLabel.Primary" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/edt_hint_password"
+            app:errorTextAppearance="@style/TextLabel.Primary.Error"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextAppearance="@style/TextLabel.Primary"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/colorTextSecondary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_password"
+                fontPath="@string/light"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:theme="@style/TextLabel.Primary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/confirm_password"
+            app:errorTextAppearance="@style/TextLabel.Primary.Error"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextAppearance="@style/TextLabel.Primary"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/colorTextSecondary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_confirm_password"
+                fontPath="@string/light"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:theme="@style/TextLabel.Primary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_create_account"
+            style="@style/Button.Primary"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:text="@string/btn_sign_up" />
+    </LinearLayout>
+</ScrollView>

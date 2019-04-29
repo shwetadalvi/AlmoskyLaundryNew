@@ -1,0 +1,164 @@
+{
+  "project_info": {
+    "project_number": "504292855687",
+    "firebase_url": "https://almoskydriver.firebaseio.com",
+    "project_id": "almoskydriver",
+    "storage_bucket": "almoskydriver.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504292855687:android:6f9a9fff0db1cb38",
+        "android_client_info": {
+          "package_name": "admin.com.almoskyadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "504292855687-v52jdiob7nt4e353nvicpr13arrss7kp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "admin.com.almoskyadmin",
+            "certificate_hash": "75ddd8921d082712fcbcf3e03e52601de4bd95e4"
+          }
+        },
+        {
+          "client_id": "504292855687-rcm7dhansf712h6kgh62e4o1h0sjappi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4ywfcKkIEUUbrx8FO822zJ0xzPzpDyTc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "504292855687-rcm7dhansf712h6kgh62e4o1h0sjappi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "504292855687-9elts2qvms152138a1qmsr1en8t0fmvh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.almosky.app"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504292855687:android:d84edfade1ffdc24",
+        "android_client_info": {
+          "package_name": "com.almosky.almoskylaundry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "504292855687-83s5midl0f43469hipqf16njksl925vq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.almosky.almoskylaundry",
+            "certificate_hash": "75ddd8921d082712fcbcf3e03e52601de4bd95e4"
+          }
+        },
+        {
+          "client_id": "504292855687-rcm7dhansf712h6kgh62e4o1h0sjappi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4ywfcKkIEUUbrx8FO822zJ0xzPzpDyTc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "504292855687-rcm7dhansf712h6kgh62e4o1h0sjappi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "504292855687-9elts2qvms152138a1qmsr1en8t0fmvh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.almosky.app"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504292855687:android:08baa1a81dfe754a",
+        "android_client_info": {
+          "package_name": "com.almosky.driver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "504292855687-ecjjube3nst4n9dhjbco839nqjo9vk4m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.almosky.driver",
+            "certificate_hash": "75ddd8921d082712fcbcf3e03e52601de4bd95e4"
+          }
+        },
+        {
+          "client_id": "504292855687-rcm7dhansf712h6kgh62e4o1h0sjappi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4ywfcKkIEUUbrx8FO822zJ0xzPzpDyTc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "504292855687-rcm7dhansf712h6kgh62e4o1h0sjappi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "504292855687-9elts2qvms152138a1qmsr1en8t0fmvh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.almosky.app"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+    <include layout="@layout/layout_toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.almosky.almoskylaundryApp.helper.ProgressConstraintLayout
+            android:id="@+id/progressLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                app:cameraZoom="13.0"
+                app:layout_constraintDimensionRatio="16:9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:liteMode="true"
+                app:mapType="normal" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/mapCover"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                app:layout_constraintDimensionRatio="16:9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@null"/>
+
+            <ImageView
+                android:id="@+id/pin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:layout_constraintBottom_toBottomOf="@+id/map"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/map"
+                app:srcCompat="@drawable/ic_address_map_pin_icon" />
+
+            <TextView
+                android:id="@+id/textTitle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="11.0dip"
+                android:text="@string/text_pick_up_and_delivery_details"
+                android:textColor="@color/colorDarkBlue"
+                android:textSize="20.0sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/map" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputAddressName"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10.0dip"
+                app:errorTextAppearance="@style/TextLabel.Primary.Error"
+                app:hintTextAppearance="@style/TextLabel.Primary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textTitle">
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/edtAddressName"
+                    fontPath="@string/light"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="36dp"
+                    android:hint="@string/text_title_address_name_optional"
+                    android:inputType="textPostalAddress"
+                    android:theme="@style/TextLabel.Primary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/currentLocationIc"
+                android:layout_width="36dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/inputAddressName"
+                app:layout_constraintEnd_toEndOf="@+id/inputAddressName"
+                app:layout_constraintTop_toTopOf="@+id/inputAddressName"
+                app:layout_constraintVertical_bias="0.64"
+                app:srcCompat="@drawable/ic_map" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputArea"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10.0dip"
+                app:errorTextAppearance="@style/TextLabel.Primary.Error"
+                app:hintTextAppearance="@style/TextLabel.Primary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputAddressName">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtArea"
+                    fontPath="@string/light"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="36dp"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:hint="@string/text_area"
+                    android:inputType="textPostalAddress"
+                    android:onClick="showArea"
+                    android:theme="@style/TextLabel.Primary" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:id="@+id/currentLocationIc3"
+                android:layout_width="36dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/inputArea"
+                app:layout_constraintEnd_toEndOf="@+id/inputArea"
+                app:layout_constraintTop_toTopOf="@+id/inputArea"
+                app:layout_constraintVertical_bias="0.64"
+                app:srcCompat="@drawable/ic_map" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputBlock"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10.0dip"
+                app:errorTextAppearance="@style/TextLabel.Primary.Error"
+                app:hintTextAppearance="@style/TextLabel.Primary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputBuilding">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtBlock"
+                    fontPath="@string/light"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/text_title_block"
+                    android:inputType="textPostalAddress"
+                    android:theme="@style/TextLabel.Primary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputStreet"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10.0dip"
+                android:visibility="gone"
+                app:errorTextAppearance="@style/TextLabel.Primary.Error"
+                app:hintTextAppearance="@style/TextLabel.Primary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputBlock">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtStreet"
+                    fontPath="@string/light"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/text_street"
+                    android:inputType="textPostalAddress"
+                    android:theme="@style/TextLabel.Primary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputBuilding"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10.0dip"
+                android:layout_marginTop="8dp"
+                app:errorTextAppearance="@style/TextLabel.Primary.Error"
+                app:hintTextAppearance="@style/TextLabel.Primary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputArea">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtHouse"
+                    fontPath="@string/light"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/text_building"
+                    android:inputType="textPostalAddress"
+                    android:theme="@style/TextLabel.Primary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputAddressType"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10.0dip"
+                app:errorTextAppearance="@style/TextLabel.Primary.Error"
+                app:hintTextAppearance="@style/TextLabel.Primary"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputBuilding">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtAddressType"
+                    fontPath="@string/light"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/text_title_address_type"
+                    android:inputType="textPostalAddress"
+                    android:theme="@style/TextLabel.Primary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputFloor"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10.0dip"
+                app:errorTextAppearance="@style/TextLabel.Primary.Error"
+                app:hintTextAppearance="@style/TextLabel.Primary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputBlock">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtFloor"
+                    fontPath="@string/light"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/text_floor"
+                    android:inputType="textPostalAddress"
+                    android:theme="@style/TextLabel.Primary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputAvenue"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10.0dip"
+                android:visibility="gone"
+                app:errorTextAppearance="@style/TextLabel.Primary.Error"
+                app:hintTextAppearance="@style/TextLabel.Primary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputFloor">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtAvenue"
+                    fontPath="@string/light"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/text_avenue"
+                    android:inputType="textPostalAddress"
+                    android:theme="@style/TextLabel.Primary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputPhoneExt"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10.0dip"
+                android:layout_marginTop="10.0dip"
+                app:errorTextAppearance="@style/TextLabel.Primary.Error"
+                app:hintTextAppearance="@style/TextLabel.Primary"
+                app:layout_constraintEnd_toStartOf="@+id/inputPhone"
+                app:layout_constraintHorizontal_weight="0.25"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputAvenue">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtPhoneExt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:hint="@string/edt_hint_code"
+                    android:inputType="textPhonetic"
+
+                    android:text="+971"
+                    android:theme="@style/TextLabel.Primary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputPhone"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10.0dip"
+                android:layout_marginStart="10.0dip"
+                android:layout_marginTop="10.0dip"
+                app:errorTextAppearance="@style/TextLabel.Primary.Error"
+                app:hintTextAppearance="@style/TextLabel.Primary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="1.0"
+                app:layout_constraintStart_toEndOf="@+id/inputPhoneExt"
+                app:layout_constraintTop_toBottomOf="@+id/inputAvenue">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtPhone"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/edt_hint_mobile"
+                    android:inputType="phone"
+                    android:theme="@style/TextLabel.Primary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputAdditional"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10.0dip"
+                app:errorTextAppearance="@style/TextLabel.Primary.Error"
+                app:hintTextAppearance="@style/TextLabel.Primary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputPhone"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorTextSecondary">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtAdditional"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:hint="@string/text_additional"
+                    android:inputType="textPostalAddress"
+                    android:theme="@style/TextLabel.Primary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnStoreAddress"
+                style="@style/Button.Primary"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_margin="16.0dip"
+                android:backgroundTint="@color/colorOrange"
+                android:onClick="saveAddress"
+                android:text="@string/btn_save_address"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputAdditional" />
+        </com.almosky.almoskylaundryApp.helper.ProgressConstraintLayout>
+
+
+    </ScrollView>
+</LinearLayout>

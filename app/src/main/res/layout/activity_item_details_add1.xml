@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/layout_toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="0dp"
+                android:text="title"
+                android:textColor="@color/blue"
+                android:textSize="35dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/contentLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/dry_clean"
+                                    android:textColor="@color/black"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="@string/dry_clean_iron_and_hang"
+                                    android:textColor="#C0C0C0"
+                                    android:textSize="16dp" />
+
+                                <TextView
+                                    android:id="@+id/tv_dry_price"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+
+                                    android:textColor="#959591"
+                                    android:textSize="16dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/dryCleanMinus"
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:src="@mipmap/minus"
+                                    android:tint="@color/dark_grey" />
+
+                                <TextView
+                                    android:id="@+id/dryCleanCount"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:text="0"
+                                    android:textColor="@color/black"
+                                    android:textSize="20dp" />
+
+                                <ImageView
+                                    android:id="@+id/dryCleanPlus"
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:src="@mipmap/plus"
+                                    android:tint="@color/dark_grey" />
+                            </LinearLayout>
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey"></View>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/wash_iron"
+                                    android:textColor="@color/black"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="@string/wash_iron_hang"
+                                    android:textColor="#C0C0C0"
+                                    android:textSize="16dp" />
+
+                                <TextView
+                                    android:id="@+id/tv_wash_price"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+
+                                    android:textColor="#959591"
+                                    android:textSize="16dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/washIronMinus"
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:src="@mipmap/minus"
+                                    android:tint="@color/dark_grey" />
+
+                                <TextView
+                                    android:id="@+id/washIronCount"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:text="0"
+                                    android:textColor="@color/black"
+                                    android:textSize="20dp" />
+
+                                <ImageView
+                                    android:id="@+id/washIronPlus"
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:src="@mipmap/plus"
+                                    android:tint="@color/dark_grey" />
+                            </LinearLayout>
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey"></View>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/ironing"
+                                    android:textColor="@color/black"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="@string/iron_and_hang"
+                                    android:textColor="#C0C0C0"
+                                    android:textSize="16dp" />
+
+                                <TextView
+                                    android:id="@+id/tv_iron_price"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+
+                                    android:textColor="#959591"
+                                    android:textSize="16dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/ironingMinus"
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:src="@mipmap/minus"
+                                    android:tint="@color/dark_grey" />
+
+                                <TextView
+                                    android:id="@+id/ironingCount"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:text="0"
+                                    android:textColor="@color/black"
+                                    android:textSize="20dp" />
+
+                                <ImageView
+                                    android:id="@+id/ironingPlus"
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:src="@mipmap/plus"
+                                    android:tint="@color/dark_grey" />
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@+id/contentLayout"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@color/green">
+
+                        <TextView
+                            android:id="@+id/addToBasketId"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_centerInParent="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:text="@string/add_to_basket"
+                            android:textColor="@color/white"
+                            android:textSize="18dp" />
+                    </RelativeLayout>
+                </RelativeLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

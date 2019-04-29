@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <include layout="@layout/layout_toolbar" />
+
+    <include layout="@layout/content_checkout" />
+
+    <Button
+        android:id="@+id/btnPlaceOrder"
+        style="@style/Button.Primary"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="16.0dip"
+        android:backgroundTint="@color/colorGreen"
+        android:onClick="placeOrder"
+        android:text="@string/btn_place_order" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

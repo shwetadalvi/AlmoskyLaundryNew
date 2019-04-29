@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.almosky.almoskylaundryApp.helper.ProgressConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@id/progressLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+
+  <androidx.cardview.widget.CardView
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:layout_marginTop="10.0dip"
+      app:cardCornerRadius="0.0dip"
+      app:cardElevation="4.0dip">
+
+      <LinearLayout
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+          android:orientation="vertical">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:padding="5dp"
+              android:weightSum="3">
+
+              <Button
+                  android:id="@+id/dryCleanButton"
+                  android:layout_width="0dp"
+                  android:layout_height="@dimen/fourty_dp"
+                  android:layout_weight="1"
+                  android:background="@drawable/ic_button_selectable"
+                  android:text="Dry Clean"
+
+                  android:textSize="12dp" />
+
+              <Button
+                  android:id="@+id/washIronButton"
+                  android:layout_width="0dp"
+                  android:layout_height="@dimen/fourty_dp"
+                  android:layout_marginLeft="10dp"
+                  android:layout_marginRight="10dp"
+                  android:layout_weight="1"
+                  android:background="@drawable/ic_button_selectable"
+                  android:text="Wash &amp; Iron"
+                  android:textSize="12dp" />
+
+              <Button
+                  android:id="@+id/ironingButton"
+                  android:layout_width="0dp"
+                  android:layout_height="@dimen/fourty_dp"
+                  android:layout_weight="1"
+                  android:background="@drawable/ic_button_selectable"
+                  android:text="Ironing"
+                  android:textSize="12dp" />
+          </LinearLayout>
+
+    <!--         <EditText
+                     android:id="@+id/edtSearch"
+                     android:layout_width="fill_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginEnd="5.0dip"
+                     android:layout_marginStart="5.0dip"
+                     android:layout_marginTop="10.0dip"
+                     android:background="@drawable/ic_search_view"
+                     android:drawableEnd="@drawable/ic_price_search"
+                     android:hint="@string/edt_hint_search_item"
+                     android:padding="10.0dip"
+                     android:paddingBottom="10.0dip"
+                     android:paddingEnd="16.0dip"
+                     android:paddingStart="16.0dip"
+                     android:textColor="@color/colorTextSecondary"
+                     android:textColorHint="@color/colorTextSecondary"
+                     app:layout_constraintBottom_toTopOf="@id/listPrices"
+                     app:layout_constraintTop_toTopOf="parent" />
+
+                 <android.support.v7.widget.RecyclerView
+                     android:id="@id/listPrices"
+                     android:layout_width="fill_parent"
+                     android:layout_height="0.0dip"
+                     android:layout_marginTop="5.0dip"
+                     app:layout_constraintBottom_toBottomOf="parent"
+                     app:layout_constraintTop_toBottomOf="@+id/edtSearch" /> -->
+
+           <com.mindorks.placeholderview.ExpandablePlaceHolderView
+                android:id="@+id/dryexpandableView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/bottomLayout"
+                android:layout_below="@+id/apbar"
+                android:clickable="true"
+                android:scrollbars="vertical"
+               android:visibility="visible"/>
+          <com.mindorks.placeholderview.ExpandablePlaceHolderView
+              android:id="@+id/washexpandableView"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_above="@+id/bottomLayout"
+              android:layout_below="@+id/apbar"
+              android:clickable="true"
+              android:scrollbars="vertical"
+              android:visibility="gone"/>
+          <com.mindorks.placeholderview.ExpandablePlaceHolderView
+              android:id="@+id/ironexpandableView"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_above="@+id/bottomLayout"
+              android:layout_below="@+id/apbar"
+              android:clickable="true"
+              android:scrollbars="vertical"
+              android:visibility="gone"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</com.almosky.almoskylaundryApp.helper.ProgressConstraintLayout>

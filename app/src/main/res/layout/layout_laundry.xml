@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true">
+
+    <com.smarteist.autoimageslider.SliderLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:id="@+id/imageBackdrop"
+        app:layout_constraintDimensionRatio="16:5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/imageBackdrop1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/slider4"
+        android:scaleType="centerCrop"
+        android:transitionName="backdrop"
+        android:visibility="visible"
+        app:layout_constraintDimensionRatio="16:5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/imageLogo"
+        android:layout_width="@dimen/img_large_size"
+        android:layout_height="@dimen/img_large_size"
+        android:layout_marginStart="16.0dp"
+        android:src="@mipmap/logo"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageBackdrop" />
+
+    <ImageView
+        android:id="@+id/imgDriverTracking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16.0dp"
+        android:layout_marginStart="16.0dp"
+        android:layout_marginTop="10.0dp"
+        android:visibility="gone"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageLogo"
+        app:srcCompat="@drawable/ic_tracking" />
+
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10.0dp"
+        android:layout_marginTop="10.0dp"
+        android:ellipsize="end"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:text="Almosky Laundry"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="18.0sp"
+        android:visibility="gone"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageLogo"
+        app:layout_constraintTop_toBottomOf="@+id/imageBackdrop" />
+
+    <com.hedgehog.ratingbar.RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10.0dp"
+        android:visibility="gone"
+        app:clickable="false"
+        app:halfstart="true"
+        app:layout_constraintStart_toEndOf="@+id/imageLogo"
+        app:layout_constraintTop_toBottomOf="@+id/textName"
+        app:starEmpty="@drawable/ic_star_progress"
+        app:starFill="@drawable/ic_star"
+        app:starHalf="@drawable/ic_star_half"
+        app:starImageHeight="18.0dp"
+        app:starImageSize="18.0dp"
+        app:starImageWidth="18.0dp" />
+
+    <TextView
+        android:id="@+id/textReview"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="22.0dp"
+        android:layout_marginStart="22.0dp"
+        android:includeFontPadding="false"
+        android:textColor="@color/colorTextSecondary"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/ratingBar"
+        app:layout_constraintTop_toBottomOf="@+id/textName" />
+
+    <TextView
+        android:id="@+id/textRatingMessage"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10.0dp"
+        android:includeFontPadding="false"
+        android:text="@string/text_not_rated"
+        android:textColor="@color/colorOrange"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/imageLogo"
+        app:layout_constraintTop_toBottomOf="@+id/textName" />
+
+    <TextView
+        android:id="@+id/textSpecialService"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="10.0dp"
+        android:layout_marginTop="10.0dp"
+        android:text="@string/special_service"
+        android:visibility="gone"
+        android:textColor="@color/colorTextSecondary"
+        app:layout_constraintBottom_toTopOf="@+id/textMinPriceTitle"
+        app:layout_constraintStart_toEndOf="@+id/imageLogo"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/specialServiceList"
+        android:layout_width="wrap_content"
+        android:layout_height="20.0dp"
+        android:layout_marginEnd="20.0dp"
+        android:layout_marginStart="20.0dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/textSpecialService"
+        app:layout_constraintTop_toTopOf="@+id/textSpecialService" />
+
+    <TextView
+        android:id="@+id/textMinPriceTitle"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10.0dp"
+        android:layout_marginTop="5dp"
+        android:includeFontPadding="false"
+        android:text="@string/text_minimum_order"
+        android:visibility="gone"
+        android:textColor="@color/colorTextSecondary"
+        app:layout_constraintBottom_toTopOf="@+id/textDeliverChargeTitle"
+        app:layout_constraintStart_toEndOf="@+id/imageLogo"
+        app:layout_constraintTop_toBottomOf="@+id/textSpecialService" />
+
+    <TextView
+        android:id="@+id/textMinPrice"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16.0dp"
+        android:includeFontPadding="false"
+        android:text="AED10.000"
+        android:visibility="gone"
+        android:textColor="@color/colorTextSecondary"
+        app:layout_constraintStart_toEndOf="@+id/textMinPriceTitle"
+        app:layout_constraintTop_toTopOf="@+id/textMinPriceTitle" />
+
+    <TextView
+        android:id="@+id/textDeliverChargeTitle"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10.0dp"
+        android:layout_marginTop="5dp"
+        android:includeFontPadding="false"
+        android:text="@string/text_delivery_charges"
+        android:visibility="gone"
+        android:textColor="@color/colorTextSecondary"
+        app:layout_constraintBottom_toBottomOf="@+id/textPaymentMethods"
+        app:layout_constraintStart_toEndOf="@+id/imageLogo"
+        app:layout_constraintTop_toBottomOf="@+id/textMinPriceTitle" />
+
+    <TextView
+        android:id="@+id/textDeliveryCharge"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10.0dp"
+        android:includeFontPadding="false"
+        android:text="AED0.000"
+        android:visibility="gone"
+        android:textColor="@color/colorTextSecondary"
+        app:layout_constraintStart_toEndOf="@+id/textDeliverChargeTitle"
+        app:layout_constraintTop_toTopOf="@+id/textDeliverChargeTitle" />
+
+    <TextView
+        android:id="@+id/textPaymentMethods"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1.0dp"
+        android:layout_marginStart="10.0dp"
+        android:layout_marginTop="5dp"
+        android:includeFontPadding="false"
+        android:text="@string/text_payment_type"
+        android:visibility="gone"
+        android:textColor="@color/colorTextSecondary"
+        app:layout_constraintStart_toEndOf="@+id/imageLogo"
+        app:layout_constraintTop_toBottomOf="@+id/textDeliverChargeTitle" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/paymentMethodsList"
+        android:layout_width="wrap_content"
+        android:layout_height="20.0dp"
+        android:layout_marginStart="26.0dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/textPaymentMethods"
+        app:layout_constraintTop_toTopOf="@+id/textPaymentMethods" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0dp"
+        android:layout_marginTop="10.0dp"
+        android:background="@color/colorDivider"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/paymentMethodsList"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textDateTime"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:autoSizeMaxTextSize="12.0sp"
+        android:autoSizeMinTextSize="10.0sp"
+        android:autoSizeTextType="uniform"
+        android:gravity="center"
+        android:padding="5.0dp"
+        android:text="@string/text_pickup_date_time"
+        android:textColor="@color/colorTextSecondary"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        tools:ignore="MissingConstraints" />
+</androidx.constraintlayout.widget.ConstraintLayout>

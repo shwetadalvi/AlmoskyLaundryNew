@@ -1,0 +1,88 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion 28
+
+    aaptOptions.useNewCruncher = false
+    dataBinding {
+        enabled = true
+    }
+    lintOptions {
+
+        quiet true
+        abortOnError false
+    }
+    defaultConfig {
+        applicationId "com.almosky.almoskylaundryApp"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 9
+
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        doNotStrip '*/mips/*.so'
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.firebase:firebase-auth:16.1.0'
+    implementation 'com.google.firebase:firebase-core:16.0.7'
+    implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.aurelhubert:ahbottomnavigation:2.1.0'
+    implementation 'com.google.android.material:material:1.0.0-beta01'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.github.oxoooo:pull-back-layout:1.0.1'
+    implementation 'com.hedgehog.ratingbar:app:1.1.2'
+    implementation 'com.booking:rtlviewpager:1.0.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0-beta01'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'javax.annotation:jsr250-api:1.0'
+    implementation 'com.mindorks:placeholderview:0.7.2'
+    implementation 'uk.co.chrisjenx:calligraphy:2.1.0'
+    implementation 'com.loopj.android:android-async-http:1.4.9'
+    implementation 'com.aurelhubert:ahbottomnavigation:2.1.0'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.0'
+    implementation 'com.google.dagger:dagger:2.0'
+    implementation 'javax.annotation:jsr250-api:1.0'
+    implementation 'uk.co.chrisjenx:calligraphy:2.1.0'
+    implementation 'com.loopj.android:android-async-http:1.4.9'
+    implementation 'com.shuhart.stepview:stepview:1.4.0'
+    implementation 'com.github.f0ris.sweetalert:library:1.5.1'
+    implementation 'com.leo.simplearcloader:simplearcloader:1.0.1'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.google.android.gms:play-services-places:16.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.kofigyan.stateprogressbar:stateprogressbar:1.0.0'
+    implementation 'com.github.smarteist:autoimageslider:1.1.1'
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    implementation 'com.treebo:internetavailabilitychecker:1.0.1'
+    implementation 'net.danlew:android.joda:2.10.1'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.github.delight-im:Android-SimpleLocation:v1.0.1'
+    implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
+}
+//configurations.all {
+//    resolutionStrategy.force 'com.android.support:support-annotations:23.1.0'
+//}
+apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.laundrytab.helper.ProgressFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/progressFrameLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listProfile"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+</com.laundrytab.helper.ProgressFrameLayout>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/pullBackLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:transitionName="card">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_laundry" />
+
+            <!-- <android.support.v7.widget.Toolbar
+                 android:id="@+id/toolbar"
+                 android:layout_width="fill_parent"
+                 android:layout_height="?actionBarSize"
+                 android:background="@android:color/transparent"
+                 app:layout_collapseMode="pin"
+                 app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+             <TextView
+                 android:id="@+id/titleTextView"
+                 style="@style/TextAppearance.AppCompat.Large"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|top"
+                 android:layout_margin="10.0dp"
+                 android:gravity="center"
+                 android:text="@string/app_name"
+                 android:textColor="@android:color/white"
+                 app:layout_collapseMode="pin" />-->
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dp"
+            android:background="@color/grey" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabGravity="fill"
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+            app:tabMode="fixed" />
+
+        <androidx.viewpager.widget.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="net.voidynullness.android.tabitytabs.TabLayoutActivity">
+
+        </androidx.viewpager.widget.ViewPager>
+
+        <!--  <android.support.design.widget.TabLayout
+              android:id="@+id/tabs"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              app:tabGravity="fill"
+              app:tabIndicatorColor="@color/colorPrimaryDark"
+              app:tabIndicatorHeight="1.0dp"
+              app:tabMode="fixed"
+              app:tabSelectedTextColor="@color/colorPrimaryDark"
+              app:tabTextAppearance="@style/TextAppearance.AppCompat"
+              app:tabTextColor="@color/colorPrimaryDark">
+
+              <android.support.design.widget.TabItem
+                  android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+                  android:text="@string/text_tab_order_type" />
+
+              <android.support.design.widget.TabItem
+                  android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+                  android:text="@string/text_tab_price_list" />
+
+              <android.support.design.widget.TabItem
+                  android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+                  android:text="@string/text_tab_more_info" />
+          </android.support.design.widget.TabLayout>-->
+
+        <include layout="@layout/content_laundry" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    android:orientation="vertical"
+   >
+
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:paddingLeft="30.0dip"
+        android:paddingRight="30.0dip"
+        android:paddingTop="30.0dip">
+
+        <TextView
+
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/text_contact_help"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="28.0sp" />
+
+        <TextView
+
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="10.0dip"
+            android:text="@string/text_contact_message"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="18.0sp" />
+
+        <Button
+            android:id="@+id/btnLiveChat"
+            style="@style/Button.Primary"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18.0dip"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:onClick="onViewClicked"
+            android:text="@string/btn_start_live_chat"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btnCall"
+            style="@style/Button.Primary"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18.0dip"
+            android:onClick="onViewClicked"
+            android:text="Call Us 00971525437775 " />
+
+        <Button
+            android:id="@+id/btnWriteUs"
+            style="@style/Button.Primary"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18.0dip"
+            android:backgroundTint="@color/colorAccent"
+            android:onClick="onClicked"
+            android:text="@string/btn_write_us"
+            android:visibility="gone"/>
+    </LinearLayout>
+</LinearLayout>

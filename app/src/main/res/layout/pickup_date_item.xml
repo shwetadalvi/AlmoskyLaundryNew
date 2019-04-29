@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rowDate"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingTop="8dp">
+
+    <TextView
+        android:id="@+id/day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="2018.12.21"
+        android:textColor="@color/md_black_1000"
+        android:textSize="18dp"
+        android:autoSizeMaxTextSize="18dp"
+        android:autoSizeMinTextSize="6dp"
+        android:autoSizeTextType="none" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:includeFontPadding="false"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+
+        android:textColor="@color/md_black_1000"
+        android:textSize="15dp"
+        android:autoSizeMaxTextSize="15dp"
+        android:autoSizeMinTextSize="6dp"
+        android:autoSizeTextType="none"
+        android:visibility="visible"/>
+</LinearLayout>

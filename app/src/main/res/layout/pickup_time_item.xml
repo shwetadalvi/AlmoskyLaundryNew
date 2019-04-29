@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rowTime"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@id/time"
+        style="@style/Base.TextAppearance.AppCompat.Medium"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="true"
+        android:paddingBottom="11dp"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:paddingTop="11dp"
+        android:text="@string/text_fake_time"
+        android:textColor="@color/md_black_1000"
+        android:autoSizeMaxTextSize="21dp"
+        android:autoSizeMinTextSize="12dp"
+        android:autoSizeTextType="uniform"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

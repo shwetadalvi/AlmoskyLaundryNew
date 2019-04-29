@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10.0dip"
+    android:clickable="true"
+    android:foreground="?selectableItemBackgroundBorderless"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10.0dip"
+        android:clickable="true"
+        android:foreground="?selectableItemBackgroundBorderless"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10.0dip"
+            android:clickable="true"
+            android:foreground="?selectableItemBackgroundBorderless"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/easyOrderLyt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="120.0dip"
+                    android:layout_height="120.0dip"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="100.0dip"
+                    android:maxWidth="100.0dip"
+                    android:minHeight="100.0dip"
+                    android:minWidth="100.0dip"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/easyorder"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="0.0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10.0dip"
+                    android:gravity="start|center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="@+id/image"
+                    app:layout_constraintEnd_toStartOf="@+id/arrow"
+                    app:layout_constraintStart_toEndOf="@+id/image"
+                    app:layout_constraintTop_toTopOf="@+id/image">
+
+                    <TextView
+                        android:id="@+id/textTitle"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/item_text_landry_bag"
+                        android:textColor="@color/md_black_1000" />
+
+                    <TextView
+                        android:id="@+id/textDescription"
+                        style="@style/TextAppearance.AppCompat.Small"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLength="150"
+                        android:visibility="visible"
+                        android:maxWidth="160.0dip"
+                        android:text="@string/text_laundry_bag_details"
+                        android:textColor="@color/colorTextSecondary" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10.0dip"
+                    android:tint="@color/colorPrimaryDark"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_arrow_right" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10.0dip"
+            android:clickable="true"
+            android:foreground="?selectableItemBackgroundBorderless"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/normalOrderLyt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/image2"
+                    android:layout_width="120.0dip"
+                    android:layout_height="120.0dip"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="100.0dip"
+                    android:maxWidth="100.0dip"
+                    android:minHeight="100.0dip"
+                    android:minWidth="100.0dip"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/ic_ordertype"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="0.0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10.0dip"
+                    android:gravity="start|center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="@+id/image2"
+                    app:layout_constraintEnd_toStartOf="@+id/arrow2"
+                    app:layout_constraintStart_toEndOf="@+id/image2"
+                    app:layout_constraintTop_toTopOf="@+id/image2">
+
+                    <TextView
+                        android:id="@+id/textTitle2"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pick_the_items"
+                        android:textColor="@color/md_black_1000" />
+
+                    <TextView
+                        android:id="@+id/textDescription2"
+                        style="@style/TextAppearance.AppCompat.Small"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLength="150"
+                        android:maxWidth="160.0dip"
+                        android:visibility="visible"
+                        android:text="Detailed Selection of what items are required"
+                        android:textColor="@color/colorTextSecondary" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/arrow2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10.0dip"
+                    android:tint="@color/colorPrimaryDark"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_arrow_right" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</ScrollView>

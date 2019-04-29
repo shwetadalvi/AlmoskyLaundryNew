@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.vlonjatg.progressactivity.ProgressConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/progressLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listAddress"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</com.vlonjatg.progressactivity.ProgressConstraintLayout>

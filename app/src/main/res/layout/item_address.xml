@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:id="@+id/lytAddress">
+
+    <TextView
+        android:id="@+id/textTitle"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16.0dip"
+        android:includeFontPadding="false"
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/md_black_1000"
+        android:textSize="22.0sp"
+        android:text="My Address"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="-5.0dip"
+        android:maxLines="2"
+
+        android:maxWidth="400.0dip"
+        android:textColor="@color/md_black_1000"
+        android:textSize="17.0sp"
+        app:layout_constraintStart_toStartOf="@+id/textTitle"
+        app:layout_constraintTop_toBottomOf="@+id/textTitle" />
+
+    <Button
+        android:id="@+id/btnEdit"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16.0dip"
+        android:layout_marginEnd="10.0dip"
+        android:gravity="center"
+        android:text="@string/action_edit"
+        android:textColor="@color/colorDarkBlue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnDelete"
+        app:layout_constraintTop_toBottomOf="@+id/textAddress" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16.0dip"
+        android:layout_marginEnd="10.0dip"
+        android:gravity="center"
+        android:text="@string/action_delete"
+        android:textColor="@color/colorDarkBlue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textAddress" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/seperator"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDelete"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

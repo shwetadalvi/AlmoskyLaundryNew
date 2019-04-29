@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/lytorder">
+
+    <TextView
+        android:id="@+id/textTitleOrderDate"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10.0dip"
+        android:text="Pickup Date"
+        android:textColor="@color/colorTextPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/imageLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageLogo" />
+
+    <TextView
+        android:id="@+id/textOrderDate"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="@+id/textTitleOrderDate"
+        app:layout_constraintTop_toBottomOf="@+id/textTitleOrderDate" />
+
+    <TextView
+        android:id="@+id/textTitleOrderNo"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_order_no"
+        android:textColor="@color/colorTextPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/imageLogo"
+        app:layout_constraintStart_toStartOf="@+id/textOrderNo"
+        app:layout_constraintTop_toTopOf="@+id/imageLogo" />
+
+    <TextView
+        android:id="@+id/textOrderNo"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10.0dip"
+        android:minWidth="80.0dip"
+        android:text="#30103030"
+        android:textColor="@color/colorDarkBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTitleOrderNo" />
+
+    <ImageView
+        android:id="@+id/imageLogo"
+        android:layout_width="60.0dip"
+        android:layout_height="60.0dip"
+        android:layout_margin="16.0dip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.kofigyan.stateprogressbar.StateProgressBar
+        android:id="@+id/stateProgressBar"
+        fontPath="@string/light"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30.0dip"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@+id/imageLogo"
+        app:spb_animateToCurrentProgressState="false"
+        app:spb_checkStateCompleted="true"
+        app:spb_currentStateDescriptionColor="@color/colorGreen"
+        app:spb_currentStateNumber="one"
+        app:spb_descriptionTopSpaceIncrementer="16.0dip"
+        app:spb_maxStateNumber="five"
+        app:spb_stateBackgroundColor="@color/md_grey_300"
+        app:spb_stateDescriptionColor="@color/md_grey_300"
+        app:spb_stateForegroundColor="@color/colorGreen"
+        app:spb_stateNumberBackgroundColor="@color/md_white_1000"
+        app:spb_stateNumberForegroundColor="@color/md_white_1000"
+        app:spb_stateSize="25.0sp"
+        app:spb_stateTextSize="15.0sp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textStatus"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16.0dip"
+        android:layout_marginStart="11.0dip"
+        android:layout_marginTop="16.0dip"
+        android:text=""
+        android:textColor="@color/colorGreen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stateProgressBar" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16.0dip"
+        android:layout_marginEnd="10.0dip"
+        android:layout_marginTop="16.0dip"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stateProgressBar">
+
+        <Button
+            android:id="@+id/btnPayment"
+            style="@style/Button.Primary.Borderless"
+            android:layout_width="180.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5.0dip"
+            android:backgroundTint="@color/colorGreen"
+            android:minHeight="45.0dip"
+            android:minWidth="180.0dip"
+            android:padding="0.0dip"
+            android:paddingEnd="10.0dip"
+            android:paddingStart="10.0dip"
+
+            android:textColor="@color/colorGreen"
+            android:textSize="15.0sp"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/btnRate"
+            style="@style/Button.Primary.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5.0dip"
+            android:backgroundTint="@color/colorOrange"
+            android:drawableStart="@drawable/ic_star_outline"
+            android:drawingCacheQuality="high"
+            android:includeFontPadding="false"
+            android:minHeight="45.0dip"
+            android:minWidth="180.0dip"
+            android:padding="0.0dip"
+            android:paddingEnd="10.0dip"
+            android:paddingStart="10.0dip"
+            android:text="@string/btn_rate_order"
+            android:textColor="@color/colorOrange"
+            android:textSize="15.0sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btnTracking"
+            style="@style/Button.Primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5.0dip"
+            android:backgroundTint="@color/colorOrange"
+            android:drawingCacheQuality="high"
+            android:includeFontPadding="false"
+            android:minHeight="45.0dip"
+            android:minWidth="180.0dip"
+            android:padding="0.0dip"
+            android:paddingEnd="10.0dip"
+            android:paddingStart="10.0dip"
+            android:text="@string/btn_track_driver"
+            android:textSize="15.0sp"
+            android:visibility="gone" />
+     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/seperator"
+        tools:ignore="MissingConstraints" />
+</androidx.constraintlayout.widget.ConstraintLayout>
