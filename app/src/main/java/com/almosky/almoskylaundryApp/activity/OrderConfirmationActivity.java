@@ -1017,7 +1017,7 @@ public class OrderConfirmationActivity extends BaseActivity {
                 subtotal = subtotal - nasabDiscount;
                 binding.lytDiscount.setVisibility(View.VISIBLE);
                 binding.tvDiscountNisab1.setText(getResources().getString(R.string.text_discount_nisab) + "(" + String.valueOf(Almosky.getInst().getNasabRate()) + "%)");
-                binding.tvDiscountNisab.setText(PerfectDecimal(String.valueOf(nasabDiscount).toString(), 6, 2));
+                binding.tvDiscountNisab.setText(String.format("%.2f",nasabDiscount));
                 //  binding.tvDiscountNisab.setText(String.valueOf(discount).toString());
              //   discountAmount = discountAmount + vat;
 
@@ -1036,8 +1036,8 @@ public class OrderConfirmationActivity extends BaseActivity {
             }
             double vat = (subtotal * (Almosky.getInst().getVatRate() * 0.01));
             subtotal = subtotal + vat;
-            binding.vattotalPrice.setText(PerfectDecimal(String.valueOf((vat)),6,2)+"AED");
-            binding.subtotalPrice.setText(PerfectDecimal(String.valueOf(subtotal).toString(), 6, 2) + "AED");
+            binding.vattotalPrice.setText(String.format("%.2f",vat));
+            binding.subtotalPrice.setText(String.format("%.2f",subtotal) + "AED");
         } else {
 
         }
