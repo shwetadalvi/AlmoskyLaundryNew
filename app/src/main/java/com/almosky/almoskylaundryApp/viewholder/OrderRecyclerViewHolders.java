@@ -20,7 +20,7 @@ public class OrderRecyclerViewHolders extends RecyclerView.ViewHolder {
 
     private TextView textTitle;
     //    UserActionCountItemBinding binding;
-    public TextView orderdate,orderno,status;
+    public TextView orderdate,orderno,status,textCreatedDate;
     public ConstraintLayout lyt;
     public Button payment;
 
@@ -41,6 +41,7 @@ public class OrderRecyclerViewHolders extends RecyclerView.ViewHolder {
 
         orderdate = itemView.findViewById(R.id.textOrderDate);
         orderno = itemView.findViewById(R.id.textOrderNo);
+        textCreatedDate = itemView.findViewById(R.id.textCreatedDate);
         status=itemView.findViewById(R.id.textStatus);
          stateProgressBar=itemView.findViewById(R.id.stateProgressBar);
          payment=(Button)itemView.findViewById(R.id.btnPayment);
@@ -65,7 +66,7 @@ public class OrderRecyclerViewHolders extends RecyclerView.ViewHolder {
     public void bind(OrderListdto.Result item) {
 
         _data=item;
-
+        textCreatedDate.setText("Created Date : "+item.getCreationDate());
         orderdate.setText(item.getPickupTime());
         orderno.setText(item.getOrderNo());
 

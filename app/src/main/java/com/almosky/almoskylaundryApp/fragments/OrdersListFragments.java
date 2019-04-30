@@ -24,6 +24,8 @@ import com.google.gson.Gson;
 import com.leo.simplearcloader.SimpleArcDialog;
 import com.loopj.android.http.RequestParams;
 
+import java.util.ArrayList;
+
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 
@@ -127,7 +129,12 @@ public class OrdersListFragments extends Fragment implements TabHostActivity.Fra
                         .show();
 
             }else {
-                OrderListAdapter mAdapter = new OrderListAdapter(tabHostActivity, orderList.getResult());
+                ArrayList<OrderListdto.Result> activeOrderList = new ArrayList<>();
+                for (OrderListdto.Result item : orderList.getResult()){
+                    if(item.getOrderStatus() == 0 || item.getOrderStatus() == 1 || item.getOrderStatus() == 2|| item.getOrderStatus() == 3 || item.getOrderStatus() == 5)
+                        activeOrderList.add(item);
+                }
+                OrderListAdapter mAdapter = new OrderListAdapter(tabHostActivity, activeOrderList);
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(tabHostActivity);
                 rvOrders.setLayoutManager(mLayoutManager);
                 rvOrders.setItemAnimator(new DefaultItemAnimator());

@@ -170,7 +170,12 @@ public class TabHostActivity extends BaseActivity {
 
 
                     TextView textName = (TextView) dialog.findViewById(R.id.textOffer);
+                    TextView textDiscount = (TextView) dialog.findViewById(R.id.textDiscount);
+                    TextView textDate = (TextView) findViewById(R.id.textDate);
+                    textDiscount.setText(String.valueOf(discount.getDiscAmt()+" %"));
                     textName.setText(discount.getDiscountText());
+                  //  textDate.setText("Offer valid from "+discount.getExpFrom()+" To "+discount.getExpTo());
+                   // textDate.setText("Offer valid from ");
                     ImageView imageView = dialog.findViewById(R.id.image);
                     Glide.with(TabHostActivity.this).load(discount.getDiscountImageURL()).into(imageView);
 

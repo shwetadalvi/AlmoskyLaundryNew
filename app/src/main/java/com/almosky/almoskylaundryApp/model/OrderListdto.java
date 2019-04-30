@@ -52,7 +52,9 @@ public class OrderListdto {
         @SerializedName("PaymentStatus")
         @Expose
         private int payment_status;
-
+        @SerializedName("RequestDate")
+        @Expose
+        private String creationDate;
 
 
 
@@ -138,6 +140,14 @@ public class OrderListdto {
 
         public void setPayment_status(int payment_status) {
             this.payment_status = payment_status;
+        }
+
+        public String getCreationDate() {
+            return creationDate;
+        }
+
+        public void setCreationDate(String creationDate) {
+            this.creationDate = creationDate;
         }
 
 
