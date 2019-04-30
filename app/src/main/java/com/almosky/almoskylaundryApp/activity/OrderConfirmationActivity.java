@@ -61,7 +61,7 @@ public class OrderConfirmationActivity extends BaseActivity {
     SimpleArcDialog dialog;
     ApiCalls apiCalls;
 
-    private double adminDiscount = 0;
+    private double adminDiscount = 0,nasabDiscount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -284,6 +284,12 @@ public class OrderConfirmationActivity extends BaseActivity {
 
 
         if (null != wash || null != dry || null != iron) {
+            String splitAmount[]=binding.subtotalPrice.getText().toString().split("AED");
+            String totalamount = splitAmount[0];
+            String splitAmount1[]=binding.totalPrice.getText().toString().split("AED");
+            String itemAmount = splitAmount1[0];
+            String splitAmount2[]=binding.vattotalPrice.getText().toString().split("AED");
+            String vatAmount = splitAmount2[0];
 
             try {
 
@@ -304,14 +310,14 @@ public class OrderConfirmationActivity extends BaseActivity {
                 // object.put("delDate", "2014-12-5");
                 object.put("deltime", Almosky.getInst().getDeliverytime());
                 //object.put("delTime", "6:30:00");
-                object.put("totalamount", binding.subtotalPrice.getText().toString());
+                object.put("totalamount",totalamount);
 
                 object.put("addressId", Almosky.getInst().getAddressId());
                 object.put("deliveryType", Almosky.getInst().getDeliveryType());
-                object.put("itemAmount", binding.totalPrice.getText().toString());
-                object.put("nasabDiscountAmount", binding.tvDiscountNisab.getText().toString());
-                object.put("vatAmount", binding.vattotalPrice.getText().toString());
-                object.put("customerDiscount", binding.tvDiscount.getText().toString());
+                object.put("itemAmount", itemAmount);
+                object.put("nasabDiscountAmount", nasabDiscount);
+                object.put("vatAmount",vatAmount);
+                object.put("customerDiscount", adminDiscount);
                 object.put("discountPercentage", Almosky.getInst().getAdminDiscount());
                 object.put("nasabPercentage", Almosky.getInst().getNasabRate());
                 object.put("remarks", binding.edtNote.getText().toString());
@@ -407,6 +413,8 @@ public class OrderConfirmationActivity extends BaseActivity {
 
                             if (result.equals("Data Inserted")) {
 
+                                String splitAmount[]=binding.subtotalPrice.getText().toString().split("AED");
+                                String totalamount = splitAmount[0];
                                 Almosky.getInst().setIronList(null);
                                 Almosky.getInst().setCartcount(0);
                                 Almosky.getInst().setWashList(null);
@@ -423,7 +431,7 @@ public class OrderConfirmationActivity extends BaseActivity {
 //                                                startActivity(go);
 
                                 Intent go = new Intent(OrderConfirmationActivity.this, PaymentActivity.class);
-                                go.putExtra("amount", binding.subtotalPrice.getText().toString());
+                                go.putExtra("amount",totalamount);
                                 go.putExtra("orderData", Data);
                                 go.putExtra("orderId", orderId);
                                 startActivity(go);
@@ -483,6 +491,12 @@ public class OrderConfirmationActivity extends BaseActivity {
                 JSONArray mainArray = new JSONArray();
                 JSONObject object = new JSONObject();
 
+                String splitAmount[]=binding.subtotalPrice.getText().toString().split("AED");
+                String totalamount = splitAmount[0];
+                String splitAmount1[]=binding.totalPrice.getText().toString().split("AED");
+                String itemAmount = splitAmount1[0];
+                String splitAmount2[]=binding.vattotalPrice.getText().toString().split("AED");
+                String vatAmount = splitAmount2[0];
 
                 object.put(Constants.email, appPrefes.getData(PrefConstants.email));
                 object.put("pickdate", Almosky.getInst().getPickupdate());
@@ -497,14 +511,14 @@ public class OrderConfirmationActivity extends BaseActivity {
                 // object.put("delDate", "2014-12-5");
                 object.put("deltime", Almosky.getInst().getDeliverytime());
                 //object.put("delTime", "6:30:00");
-                object.put("totalamount", binding.subtotalPrice.getText().toString());
+                object.put("totalamount", totalamount);
 
                 object.put("addressId", Almosky.getInst().getAddressId());
                 object.put("deliveryType", Almosky.getInst().getDeliveryType());
-                object.put("itemAmount", binding.totalPrice.getText().toString());
-                object.put("nasabDiscountAmount", binding.tvDiscountNisab.getText().toString());
-                object.put("vatAmount", binding.vattotalPrice.getText().toString());
-                object.put("customerDiscount", binding.tvDiscount.getText().toString());
+                object.put("itemAmount", itemAmount);
+                object.put("nasabDiscountAmount", nasabDiscount);
+                object.put("vatAmount",vatAmount);
+                object.put("customerDiscount", adminDiscount);
                 object.put("discountPercentage", Almosky.getInst().getAdminDiscount());
                 object.put("nasabPercentage", Almosky.getInst().getNasabRate());
                 object.put("remarks", binding.edtNote.getText().toString());
@@ -625,6 +639,7 @@ public class OrderConfirmationActivity extends BaseActivity {
                                                 Almosky.getInst().setNasabRate(0);
                                                 Almosky.getInst().setVatRate(0);
                                                 Almosky.getInst().setAdminDiscount(0);
+                                                Almosky.getInst().setNasabRate(0);
                                                 Intent go = new Intent(OrderConfirmationActivity.this, TabHostActivity.class);
                                                 // Intent go = new Intent(OrderConfirmationActivity.this, PaymentActivity.class);
                                                 go.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -960,25 +975,27 @@ public class OrderConfirmationActivity extends BaseActivity {
 
         double totalcount = drycount + washcount + ironcount;
         double totalamount = dryamount + washamount + ironamount;
-        double vat = (totalamount * (Almosky.getInst().getVatRate() * 0.01));
-        double subtotal = 0.0;
+        double subtotal = totalamount;
+        double discountAmount = 0;
+        //double vat = (totalamount * (Almosky.getInst().getVatRate() * 0.01));
+        // subtotal = 0.0;
 
-        if (Almosky.getInst().isOffer()) {
+        /*if (Almosky.getInst().isOffer()) {
 
             subtotal = Double.valueOf(totalamount);
 
         } else {
             subtotal = Double.valueOf(totalamount) + vat;
-        }
+        }*/
         //double subtotal1= Double.valueOf(totalamount)+vat;
         //double subtotal= Double.valueOf(totalamount)+vat;
 
-        double discount = (subtotal * (Almosky.getInst().getNasabRate() * 0.01));
-        double discountAmount = subtotal - (subtotal * (Almosky.getInst().getNasabRate() * 0.01));
+      /*  double discount = (subtotal * (Almosky.getInst().getNasabRate() * 0.01));
+        double discountAmount = subtotal - (subtotal * (Almosky.getInst().getNasabRate() * 0.01));*/
         if (Almosky.getInst().getAdminDiscount() > 0)
-            adminDiscount = (subtotal * (Almosky.getInst().getAdminDiscount() * 0.01));
+            adminDiscount = (totalamount * (Almosky.getInst().getAdminDiscount() * 0.01));
 
-        Double roundedAmount = new BigDecimal(discountAmount).setScale(2, RoundingMode.HALF_UP).doubleValue();
+      //  Double roundedAmount = new BigDecimal(discountAmount).setScale(2, RoundingMode.HALF_UP).doubleValue();
 
         if (totalcount == 0) {
 
@@ -992,27 +1009,35 @@ public class OrderConfirmationActivity extends BaseActivity {
         } else if (totalamount > 0 && totalcount > 0) {
             binding.totalPrice.setText(String.valueOf(totalamount).toString() + "AED");
             // binding.totalCount.setText(String.valueOf(totalcount));
-            binding.vattotalPrice.setText(PerfectDecimal(String.valueOf((vat)), 6, 2) + "AED");
 
-            if (Almosky.getInst().isOffer()) {
+
+            if (Almosky.getInst().isNisabClub()) {
+                nasabDiscount = subtotal * (Almosky.getInst().getNasabRate() * 0.01);
+                discountAmount = subtotal - nasabDiscount;
+                subtotal = subtotal - nasabDiscount;
                 binding.lytDiscount.setVisibility(View.VISIBLE);
                 binding.tvDiscountNisab1.setText(getResources().getString(R.string.text_discount_nisab) + "(" + String.valueOf(Almosky.getInst().getNasabRate()) + "%)");
-                binding.tvDiscountNisab.setText(PerfectDecimal(String.valueOf(discount).toString(), 6, 2));
+                binding.tvDiscountNisab.setText(PerfectDecimal(String.valueOf(nasabDiscount).toString(), 6, 2));
                 //  binding.tvDiscountNisab.setText(String.valueOf(discount).toString());
-                discountAmount = discountAmount + vat;
-                binding.subtotalPrice.setText(PerfectDecimal(String.valueOf(discountAmount).toString(), 6, 2) + "AED");
+             //   discountAmount = discountAmount + vat;
+
                 // binding.subtotalPrice.setText(String.valueOf(discountAmount).toString()+"AED");
 
 
             } else {
                 if (adminDiscount > 0) {
+                    discountAmount = subtotal - adminDiscount;
+                    subtotal = subtotal - adminDiscount;
                     binding.lytDiscount1.setVisibility(View.VISIBLE);
                     binding.tvDiscount.setText(PerfectDecimal(String.valueOf(adminDiscount).toString(), 6, 2));
-                    subtotal = subtotal - adminDiscount;
+
                 }
                 binding.subtotalPrice.setText(String.valueOf(subtotal).toString() + "AED");
             }
-
+            double vat = (subtotal * (Almosky.getInst().getVatRate() * 0.01));
+            subtotal = subtotal + vat;
+            binding.vattotalPrice.setText(PerfectDecimal(String.valueOf((vat)),6,2)+"AED");
+            binding.subtotalPrice.setText(PerfectDecimal(String.valueOf(subtotal).toString(), 6, 2) + "AED");
         } else {
 
         }
