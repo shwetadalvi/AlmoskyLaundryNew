@@ -2,6 +2,7 @@ package com.almosky.almoskylaundryApp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -92,7 +93,7 @@ public class OrderConfirmationActivity extends BaseActivity {
         binding.textAddress.setText(Almosky.getInst().getAddress());
 
         getOfferAndVatData();
-
+        getDiscount();
 
         if (Almosky.getInst().getOrderType().equals("enter")) {
 
@@ -572,7 +573,7 @@ public class OrderConfirmationActivity extends BaseActivity {
                 object.put("orders", jsonArray3);
 
                 String Data = object.toString();
-
+                Log.d("Success-", "JSON:" + "Inside Data"+Data);
 
                 StringEntity entity = null;
                 final SimpleArcDialog dialog = new SimpleArcDialog(OrderConfirmationActivity.this);
@@ -592,6 +593,7 @@ public class OrderConfirmationActivity extends BaseActivity {
                         try {
                             dialog.dismiss();
                             String object = new String(responseBody);
+                            Log.d("Success-", "JSON:" + "Inside object"+object);
                             JSONObject jsonObject = new JSONObject(object);
                             String result = jsonObject.getString("result");
 
