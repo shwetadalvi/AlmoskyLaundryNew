@@ -538,5 +538,8 @@ Order placed successfully"</string>
     <string name="fields_cannot_be_empty">Fields cannot be empty</string>
     <string name="password_mismatch">Password mismatch</string>
     <string name="password_changed">Password changed</string>
+    <string name="update_message">Your application update is availabe</string>
+    <string name="update_now">Update Now</string>
+    <string name="cancel">Cancel</string>
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
 </resources>

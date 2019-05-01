@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.almosky.almoskylaundryApp.R;
 import com.almosky.almoskylaundryApp.TabHostActivity;
@@ -38,9 +41,20 @@ public class OrdersListFragments extends Fragment implements TabHostActivity.Fra
     SimpleArcDialog dialog;
     TabHostActivity tabHostActivity;
     RecyclerView rvOrders;
-
+    ArrayList<String> orderArrayList ;
     private static final String ARG_PAGE_NUMBER = "page_number";
+    private String selectedOrder;
+private Spinner spinner;
+    ArrayList<OrderListdto.Result> activeOrderList = new ArrayList<>();
+    ArrayList<OrderListdto.Result> notAcceptedOrderList = new ArrayList<>();
+    ArrayList<OrderListdto.Result> acceptedOrderList = new ArrayList<>();
+    ArrayList<OrderListdto.Result> confirmOrderList = new ArrayList<>();
+    ArrayList<OrderListdto.Result> inProgressOrderList = new ArrayList<>();
+    ArrayList<OrderListdto.Result> completedOrderList = new ArrayList<>();
+    ArrayList<OrderListdto.Result> outForDeliverysOrderList = new ArrayList<>();
+    ArrayList<OrderListdto.Result> deliveredOrderList = new ArrayList<>();
 
+    OrderListAdapter mAdapter;
     public OrdersListFragments() {
         // Required empty public constructor
     }
@@ -61,9 +75,43 @@ public class OrdersListFragments extends Fragment implements TabHostActivity.Fra
        tabHostActivity=(TabHostActivity)getActivity();
        tabHostActivity.setOrderListener(this);
         rvOrders=(RecyclerView)view.findViewById(R.id.rvorderList);
+        spinner = (Spinner)view.findViewById(R.id.spinner);
         apiCalls=new ApiCalls();
         appPrefes=new AppPrefes(tabHostActivity);
         dialog=new SimpleArcDialog(tabHostActivity);
+
+        orderArrayList = new ArrayList<String>();
+        orderArrayList.add("Select");
+        orderArrayList.add("Not Accepted Yet");
+        orderArrayList.add("Accepted");
+        orderArrayList.add("Confirm");
+        orderArrayList.add("In Progress");
+        orderArrayList.add("Completed");
+        orderArrayList.add("Out For Delivery");
+        orderArrayList.add("Delivered");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, orderArrayList);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner.setAdapter(adapter);
+
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
+                selectedOrder = orderArrayList.get(position);
+                showFilteredData(selectedOrder);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO Auto-generated method stub
+              //  selectedOrder = orderArrayList.get(1);
+            }
+        });
+
+
 
         if(appPrefes.getBoolData(PrefConstants.isLogin)){
             getOrders();
@@ -91,6 +139,30 @@ public class OrdersListFragments extends Fragment implements TabHostActivity.Fra
             }
         });*/
         return view;
+    }
+
+    private void showFilteredData(String selectedOrder) {
+        if(selectedOrder.equalsIgnoreCase("Select"))
+        mAdapter = new OrderListAdapter(tabHostActivity, activeOrderList);
+        if(selectedOrder.equalsIgnoreCase("Not Accepted Yet"))
+            mAdapter = new OrderListAdapter(tabHostActivity, notAcceptedOrderList);
+        if(selectedOrder.equalsIgnoreCase("Accepted"))
+            mAdapter = new OrderListAdapter(tabHostActivity, acceptedOrderList);
+        if(selectedOrder.equalsIgnoreCase("Confirm"))
+            mAdapter = new OrderListAdapter(tabHostActivity, confirmOrderList);
+        if(selectedOrder.equalsIgnoreCase("In Progress"))
+            mAdapter = new OrderListAdapter(tabHostActivity, inProgressOrderList);
+        if(selectedOrder.equalsIgnoreCase("Completed"))
+            mAdapter = new OrderListAdapter(tabHostActivity, completedOrderList);
+        if(selectedOrder.equalsIgnoreCase("Out For Delivery"))
+            mAdapter = new OrderListAdapter(tabHostActivity, outForDeliverysOrderList);
+        if(selectedOrder.equalsIgnoreCase("Delivered"))
+            mAdapter = new OrderListAdapter(tabHostActivity, deliveredOrderList);
+
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(tabHostActivity);
+        rvOrders.setLayoutManager(mLayoutManager);
+        rvOrders.setItemAnimator(new DefaultItemAnimator());
+        rvOrders.setAdapter(mAdapter);
     }
 
     private void getOrders() {
@@ -129,12 +201,27 @@ public class OrdersListFragments extends Fragment implements TabHostActivity.Fra
                         .show();
 
             }else {
-                ArrayList<OrderListdto.Result> activeOrderList = new ArrayList<>();
+
                 for (OrderListdto.Result item : orderList.getResult()){
                     if(item.getOrderStatus() == 0 || item.getOrderStatus() == 1 || item.getOrderStatus() == 2|| item.getOrderStatus() == 3 || item.getOrderStatus() == 5)
                         activeOrderList.add(item);
+                    if(item.getOrderStatus() == 0)
+                        notAcceptedOrderList.add(item);
+                    if(item.getOrderStatus() == 1)
+                        acceptedOrderList.add(item);
+                    if(item.getOrderStatus() == 2)
+                        confirmOrderList.add(item);
+                    if(item.getOrderStatus() == 3)
+                        inProgressOrderList.add(item);
+                    if(item.getOrderStatus() == 4)
+                        completedOrderList.add(item);
+                    if(item.getOrderStatus() == 5)
+                        outForDeliverysOrderList.add(item);
+                    if(item.getOrderStatus() == 6)
+                        deliveredOrderList.add(item);
                 }
-                OrderListAdapter mAdapter = new OrderListAdapter(tabHostActivity, activeOrderList);
+
+                mAdapter = new OrderListAdapter(tabHostActivity, activeOrderList);
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(tabHostActivity);
                 rvOrders.setLayoutManager(mLayoutManager);
                 rvOrders.setItemAnimator(new DefaultItemAnimator());
