@@ -73,6 +73,31 @@
                 app:layout_constraintTop_toBottomOf="@+id/map" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputArea"
+                android:layout_width="fill_parent"
+                android:layout_height="63dp"
+                android:layout_margin="10.0dip"
+                app:errorTextAppearance="@style/TextLabel.Primary.Error"
+                app:hintTextAppearance="@style/TextLabel.Primary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textTitle"
+                tools:layout_editor_absoluteY="358dp">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtArea"
+                    fontPath="@string/light"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:hint="@string/text_area"
+                    android:inputType="textPostalAddress"
+                    android:onClick="showArea"
+                    android:theme="@style/TextLabel.Primary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputAddressName"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -81,7 +106,7 @@
                 app:hintTextAppearance="@style/TextLabel.Primary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textTitle">
+                app:layout_constraintTop_toBottomOf="@+id/inputArea">
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                     android:id="@+id/edtAddressName"
@@ -108,30 +133,6 @@
                 app:srcCompat="@drawable/ic_map" />
 
 
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputArea"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10.0dip"
-                app:errorTextAppearance="@style/TextLabel.Primary.Error"
-                app:hintTextAppearance="@style/TextLabel.Primary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputAddressName">
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edtArea"
-                    fontPath="@string/light"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:focusable="false"
-                    android:hint="@string/text_area"
-                    android:inputType="textPostalAddress"
-                    android:onClick="showArea"
-                    android:theme="@style/TextLabel.Primary" />
-            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputBlock"
@@ -187,7 +188,7 @@
                 app:hintTextAppearance="@style/TextLabel.Primary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputArea">
+                app:layout_constraintTop_toBottomOf="@+id/inputAddressName">
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/edtHouse"

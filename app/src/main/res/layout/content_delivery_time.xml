@@ -1,25 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.almosky.almoskylaundryApp.helper.ProgressLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/progressLayout"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-
+<LinearLayout
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="1"
+    android:orientation="horizontal"
+    android:layout_alignParentTop="true"
+    android:layout_above="@+id/view">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dates"
-        android:layout_width="130.0dp"
+        android:layout_width="0dp"
+        android:layout_weight="0.4"
         android:layout_height="wrap_content" />
 
     <View
         android:layout_width="1.0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/grey" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/times"
+        android:layout_width="0dp"
+        android:layout_weight="0.6"
+        android:layout_height="wrap_content"
+      />
+</LinearLayout>
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey"
+        android:layout_above="@+id/textTerms"/>
+    <TextView
+        android:id="@+id/textTerms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1.0" />
-</com.almosky.almoskylaundryApp.helper.ProgressLinearLayout>
+        android:text=""
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:visibility="visible"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        />
+</RelativeLayout>

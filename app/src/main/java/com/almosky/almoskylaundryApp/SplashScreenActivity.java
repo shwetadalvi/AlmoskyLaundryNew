@@ -49,8 +49,10 @@ public class SplashScreenActivity extends AppCompatActivity implements WSCallerV
 
     @Override
     public void onGetResponse(boolean isUpdateAvailable) {
-        Log.d("ResultAPPMAIN","ResultAPPMAIN" +String.valueOf(isUpdateAvailable));
+        Log.d("ResultAPPMAIN","Inside ResultAPPMAIN" +String.valueOf(isUpdateAvailable));
+        Log.d("new Version","Inside isUpdateAvailable");
         if (isUpdateAvailable) {
+            Log.d("new Version","Inside onGetResponse");
             showUpdateDialog();
         }
     }

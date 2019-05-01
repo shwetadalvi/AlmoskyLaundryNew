@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.almosky.almoskylaundryApp.Almosky;
 import com.almosky.almoskylaundryApp.R;
@@ -12,6 +13,7 @@ import com.almosky.almoskylaundryApp.adapter.PickUpDateRecyclerViewAdapter;
 import com.almosky.almoskylaundryApp.adapter.PickUpTimeRecyclerViewAdapter;
 import com.almosky.almoskylaundryApp.common.BaseActivity;
 import com.almosky.almoskylaundryApp.interfaces.ClickListeners;
+import com.almosky.almoskylaundryApp.model.GetTermsResponse;
 import com.almosky.almoskylaundryApp.model.day;
 import com.almosky.almoskylaundryApp.model.dayList;
 import com.almosky.almoskylaundryApp.model.timeList;
@@ -49,18 +51,21 @@ public class PickUpActivity extends BaseActivity implements ClickListeners.ItemC
     List<String> dateArray = new ArrayList();
     //(Arrays.asList("2019.01.02", "2019.01.03", "2019.01.04", "2019.01.05"));
     private Button btnNext;
+    private TextView textTerms;
     ArrayList<String> dayname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pick_up);
+        textTerms = findViewById(R.id.textTerms);
         dialog = new SimpleArcDialog(this);
         appPrefes = new AppPrefes(this);
         apiCalls = new ApiCalls();
         dateArray.clear();
         clearTempData();
-
+        if (Almosky.getInst().isNisabClub())
+            getTerms();
         getDays();
         DateTime today = new DateTime();
 
@@ -176,17 +181,18 @@ public class PickUpActivity extends BaseActivity implements ClickListeners.ItemC
             }
         });
     }
+
     @Override
     public void getResponse(String response, int requestId) {
         super.getResponse(response, requestId);
-        if(requestId == 1) {
+        if (requestId == 1) {
             try {
                 final dayList userData;
                 Gson gson = new Gson();
                 userData = gson.fromJson(response, dayList.class);
                 try {
 
-                    PickUpDateRecyclerViewAdapter mAdapterDate = new PickUpDateRecyclerViewAdapter(PickUpActivity.this, dateArray, dayname, "pickup",this, userData.getDay());
+                    PickUpDateRecyclerViewAdapter mAdapterDate = new PickUpDateRecyclerViewAdapter(PickUpActivity.this, dateArray, dayname, "pickup", this, userData.getDay());
                     RecyclerView.LayoutManager mLayoutManagerDate = new LinearLayoutManager(getApplicationContext());
                     recyclerViewDates.setLayoutManager(mLayoutManagerDate);
                     recyclerViewDates.setItemAnimator(new DefaultItemAnimator());
@@ -208,7 +214,7 @@ public class PickUpActivity extends BaseActivity implements ClickListeners.ItemC
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }else if(requestId == 2){
+        } else if (requestId == 2) {
             try {
                 final timeList userData;
                 Gson gson = new Gson();
@@ -216,12 +222,12 @@ public class PickUpActivity extends BaseActivity implements ClickListeners.ItemC
                 try {
                     PickUpTimeRecyclerViewAdapter mAdapterTime;
 
-                    mAdapterTime = new PickUpTimeRecyclerViewAdapter(PickUpActivity.this, timeArray, "pickup",this,userData.getResult());
+                    mAdapterTime = new PickUpTimeRecyclerViewAdapter(PickUpActivity.this, timeArray, "pickup", this, userData.getResult());
                     RecyclerView.LayoutManager mLayoutManagerTime = new LinearLayoutManager(getApplicationContext());
                     recyclerViewTimes.setLayoutManager(mLayoutManagerTime);
                     recyclerViewTimes.setItemAnimator(new DefaultItemAnimator());
                     recyclerViewTimes.setAdapter(mAdapterTime);
-                    Almosky.getInst().setPickuptime(userData.getResult().get(0).getFromTime()+" - "+userData.getResult().get(0).getToTime());
+                    Almosky.getInst().setPickuptime(userData.getResult().get(0).getFromTime() + " - " + userData.getResult().get(0).getToTime());
                     Almosky.getInst().setPickupToTime(userData.getResult().get(0).getToTime());
                 } catch (Exception e) {
 
@@ -229,6 +235,28 @@ public class PickUpActivity extends BaseActivity implements ClickListeners.ItemC
                             .setTitleText("Failed")
                             .setContentText("Data Error")
                             .show();
+                    e.printStackTrace();
+
+                }
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (requestId == 3) {
+            try {
+                final GetTermsResponse userData;
+                Gson gson = new Gson();
+                userData = gson.fromJson(response, GetTermsResponse.class);
+                try {
+                    textTerms.setVisibility(View.VISIBLE);
+                    textTerms.setText(userData.getResult());
+                } catch (Exception e) {
+/*
+                    new SweetAlertDialog(PickUpActivity.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Failed")
+                            .setContentText("Data Error")
+                            .show();*/
                     e.printStackTrace();
 
                 }
@@ -248,11 +276,11 @@ public class PickUpActivity extends BaseActivity implements ClickListeners.ItemC
         params.put(Constants.email, appPrefes.getData(PrefConstants.email));
         params.put("timeId", timeId);
         params.put("pickuptime", "");
-        if( Almosky.getInst().isNisabClub())
+        if (Almosky.getInst().isNisabClub())
             url = ApiConstants.getNasabTimings;
         else
             url = ApiConstants.getTimings;
-        Log.d("Success-", "JSON:" + "Inside Timings :"+params.toString());
+        Log.d("Success-", "JSON:" + "Inside Timings :" + params.toString());
         apiCalls.callApiPost(PickUpActivity.this, params, dialog, url, 2);
     }
 
@@ -260,11 +288,20 @@ public class PickUpActivity extends BaseActivity implements ClickListeners.ItemC
         Log.d("Success-", "JSON:" + "Inside Days");
         RequestParams params = new RequestParams();
         params.put(Constants.email, appPrefes.getData(PrefConstants.email));
-        params.put("pdate","");
-        params.put("deltype",  Almosky.getInst().getDeliveryType());
+        params.put("pdate", "");
+        params.put("deltype", Almosky.getInst().getDeliveryType());
 
         String url = ApiConstants.getDays;
         apiCalls.callApiPost(PickUpActivity.this, params, dialog, url, 1);
+    }
+
+    private void getTerms() {
+        Log.d("Success-", "JSON:" + "Inside Terms");
+        RequestParams params = new RequestParams();
+        params.put(Constants.email, appPrefes.getData(PrefConstants.email));
+
+        String url = ApiConstants.getNasabTerms;
+        apiCalls.callApiPost(PickUpActivity.this, params, dialog, url, 3);
     }
 
     @Override

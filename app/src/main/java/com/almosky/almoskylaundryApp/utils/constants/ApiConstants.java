@@ -29,7 +29,7 @@ public interface ApiConstants {
 
     String areaListsUrl = "area/list";
     String areaAddNew = "Address/new/area";
-
+    String getNasabTerms = "loginAdmin/nasabtermslist";
     String getDays = "day/list";
     String getTimings = "time/list";
     String getNasabTimings = "time/nasablist";

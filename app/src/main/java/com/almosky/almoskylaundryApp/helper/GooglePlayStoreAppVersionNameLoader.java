@@ -38,7 +38,8 @@ public class GooglePlayStoreAppVersionNameLoader extends AsyncTask<String, Void,
         try {
             isAvailableInPlayStore = true;
             if (isNetworkAvailable(mContext)) {
-                mStringCheckUpdate = Jsoup.connect("https://play.google.com/store/apps/details?id=" + mContext.getPackageName())
+             //   mStringCheckUpdate = Jsoup.connect("https://play.google.com/store/apps/details?id=" + mContext.getPackageName())
+                mStringCheckUpdate = Jsoup.connect("https://play.google.com/store/apps/details?id=com.almosky.almoskylaundryApp")
                         .timeout(10000)
                         .get()
                         .select("div[itemprop=softwareVersion]")
@@ -61,7 +62,8 @@ public class GooglePlayStoreAppVersionNameLoader extends AsyncTask<String, Void,
     protected void onPostExecute(String string) {
         if (isAvailableInPlayStore == true) {
             newVersion = string;
-            Log.e("new Version","ResultAPPMAIN new Version"+ newVersion);
+            Log.d("new Version","Inside new Version");
+            Log.d("new Version","Inside ResultAPPMAIN new Version"+ string);
             checkApplicationCurrentVersion();
             if (currentVersion.equalsIgnoreCase(newVersion)) {
                 isVersionAvailabel = false;
