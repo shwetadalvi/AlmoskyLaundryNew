@@ -3,28 +3,32 @@ package com.almosky.almoskylaundryApp;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
+import io.branch.referral.Branch;
+import io.branch.referral.BranchError;
 
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.almosky.almoskylaundryApp.activity.DeliveryActivity;
-import com.almosky.almoskylaundryApp.helper.GooglePlayStoreAppVersionNameLoader;
-import com.almosky.almoskylaundryApp.interfaces.WSCallerVersionListener;
-import com.almosky.almoskylaundryApp.utils.AppPrefes;
-import com.almosky.almoskylaundryApp.utils.constants.ApiConstants;
-import com.almosky.almoskylaundryApp.utils.constants.Constants;
-import com.almosky.almoskylaundryApp.utils.constants.PrefConstants;
-import com.loopj.android.http.RequestParams;
+import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
 
 
-public class SplashScreenActivity extends AppCompatActivity implements WSCallerVersionListener {
+public class SplashScreenActivity extends AppCompatActivity  {
 
     boolean isForceUpdate = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +38,8 @@ public class SplashScreenActivity extends AppCompatActivity implements WSCallerV
 
         Almosky.getInst().setUpdatePriceList(false);
 
-        new GooglePlayStoreAppVersionNameLoader(getApplicationContext(), this).execute();
+
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -48,36 +53,35 @@ public class SplashScreenActivity extends AppCompatActivity implements WSCallerV
     }
 
     @Override
-    public void onGetResponse(boolean isUpdateAvailable) {
-        Log.d("ResultAPPMAIN","Inside ResultAPPMAIN" +String.valueOf(isUpdateAvailable));
-        Log.d("new Version","Inside isUpdateAvailable");
-        if (isUpdateAvailable) {
-            Log.d("new Version","Inside onGetResponse");
-            showUpdateDialog();
-        }
-    }
-    public void showUpdateDialog() {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(SplashScreenActivity.this);
-
-        alertDialogBuilder.setTitle(SplashScreenActivity.this.getString(R.string.app_name));
-        alertDialogBuilder.setMessage(SplashScreenActivity.this.getString(R.string.update_message));
-        alertDialogBuilder.setCancelable(false);
-        alertDialogBuilder.setPositiveButton(R.string.update_now, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
-                dialog.cancel();
-            }
-        });
-        alertDialogBuilder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+    protected void onStart() {
+        super.onStart();
+        // Branch init
+        Branch.getInstance().initSession(new Branch.BranchReferralInitListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (isForceUpdate) {
-                    finish();
+            public void onInitFinished(JSONObject referringParams, BranchError error) {
+                if (error == null) {
+                    Log.i("BRANCH SDK", referringParams.toString());
+                    // Retrieve deeplink keys from 'referringParams' and evaluate the values to determine where to route the user
+                    // Check '+clicked_branch_link' before deciding whether to use your Branch routing logic
+                } else {
+                    Log.i("BRANCH SDK", error.getMessage());
                 }
-                dialog.dismiss();
             }
-        });
-        alertDialogBuilder.show();
+        }, this.getIntent().getData(), this);
+    }
+    /*  protected void onNewIntent(Intent intent) {
+        String action = intent.getAction();
+        String data = intent.getDataString();
+        if (Intent.ACTION_VIEW.equals(action) && data != null) {
+            String recipeId = data.substring(data.lastIndexOf("/") + 1);
+            Uri contentUri = RecipeContentProvider.CONTENT_URI.buildUpon()
+                    .appendPath(recipeId).build();
+            showRecipe(contentUri);
+        }
+    }*/
+    @Override
+    public void onNewIntent(Intent intent) {
+        this.setIntent(intent);
     }
 }
 

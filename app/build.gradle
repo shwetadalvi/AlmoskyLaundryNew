@@ -17,7 +17,7 @@ android {
         applicationId "com.almosky.almoskylaundryApp"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 8
+        versionCode 10
 
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -81,7 +81,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.github.delight-im:Android-SimpleLocation:v1.0.1'
     implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
-
+    implementation 'io.branch.sdk.android:library:3.+'
     implementation 'org.jsoup:jsoup:1.10.2'
 }
 //configurations.all {

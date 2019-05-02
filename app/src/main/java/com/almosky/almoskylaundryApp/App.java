@@ -13,6 +13,8 @@ import com.almosky.almoskylaundryApp.receiver.ConnectionReceiver;
 
 import net.danlew.android.joda.JodaTimeAndroid;
 
+import io.branch.referral.Branch;
+
 
 public class App extends Application {
 
@@ -41,7 +43,11 @@ public class App extends Application {
         activityComponent = DaggerActivityComponent.builder()
                 .appComponent(mAppComponent).build();
         mInstance = this;
+        // Branch logging for debugging
+        Branch.enableDebugMode();
 
+        // Branch object initialization
+        Branch.getAutoInstance(this);
     }
 
     public AppComponent getAppComponent() {
